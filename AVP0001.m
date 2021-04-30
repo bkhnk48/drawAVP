@@ -46,7 +46,7 @@ rectangle("Position", [-5, 20.8, 5, 20.8 ], "Facecolor",
                           [0.65, 0.16, 0.16]);%Gate 4
 
 v0 = 20/3;%(m/s)
-[x0, y0] = linearMovement(-pi/2, v0, 0, 0.81, 10 + 1.35, 10 + 2.7, 'r');
+[x0, y0, lastT] = linearMovement(-pi/2, v0, 0, 0.81, 10 + 1.35, 10 + 2.7, 'r');
 
 Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
 w0 = v0 / Radius;%angular velocity (rad/s)
@@ -69,15 +69,14 @@ y0 = y(length(y));
 hold on;
 plot(x0, y0, "-dk");
 lastT = 0.81 + deltaT;
-
-[x0, y0] = linearMovement(0, v0, lastT, lastT + 1, x0, y0, 'r');
+[x0, y0, lastT] = linearMovement(0, v0, lastT, lastT + 1, x0, y0, 'r');
 
 hold on;
 plot(x0, y0, "-dk");
 
 xCenter = x0;
 yCenter = y0 + Radius;
-lastT = lastT + 1;
+
 t = linspace(lastT, lastT + deltaT, round(deltaT*24));
 alpha = w0*(t - lastT);                  
 x = xCenter - Radius*sin(alpha);
@@ -91,14 +90,13 @@ hold on;
 plot(x0, y0, "-dk");
 
 ForwardTime = 6.7;
-[x0, y0] = linearMovement(pi/2, v0, lastT, lastT + ForwardTime, x0, y0, 'r');
+[x0, y0, lastT] = linearMovement(pi/2, v0, lastT, lastT + ForwardTime, x0, y0, 'r');
 
 hold on;
 plot(x0, y0, "-dk");
 xCenter = x0 + Radius;
 yCenter = y0;
 
-lastT = lastT + ForwardTime;
 t = linspace(lastT, lastT + deltaT, round(deltaT*24));
 alpha = w0*(t - lastT);                  
 x = xCenter - Radius*cos(alpha);
@@ -112,12 +110,12 @@ plot(x0, y0, "-dk");
 
 lastT = lastT + deltaT;
 ForwardTime = 5.5;
-[x0, y0] = linearMovement(0, v0, lastT, lastT + ForwardTime, x0, y0, 'r');
+[x0, y0, lastT] = linearMovement(0, v0, lastT, lastT + ForwardTime, x0, y0, 'r');
 hold on;
 plot(x0, y0, "-dk");
 xCenter = x0;
 yCenter = y0 + Radius;
-lastT = lastT + ForwardTime;
+
 t = linspace(lastT, lastT + deltaT, round(deltaT*24));
 alpha = w0*(t - lastT);                  
 x = xCenter + Radius*sin(alpha);
