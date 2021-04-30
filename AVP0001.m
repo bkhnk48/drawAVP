@@ -53,8 +53,8 @@ hold on;%draw overlay some graphic objects
 plot(x, y, 'r');
 
 Radius = 6.8;%radius of circle trajectory (m)
-w0 = v0 / Radius;%angular velocity
-a0 = 0.2;%radian, original angular
+w0 = v0 / Radius;%angular velocity (rad/s)
+a0 = 0.2;%original angular (rad)
 
                          
 axis([-15 130 -15 70]);%expand minimum of X, Y
