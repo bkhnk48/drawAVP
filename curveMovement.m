@@ -17,4 +17,4 @@ function [lastestX, lastestY, lastT] = curveMovement(a0, alpha, velocity, startT
   lastestX = x(length(x));
   lastestY = y(length(y));
   lastT = startTime + deltaT;
-end
+endfunction
