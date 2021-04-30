@@ -52,16 +52,18 @@ y = 10 + 2.7 - v0*t;%(m)
 hold on;%draw overlay some graphic objects
 plot(x, y, 'r');
 
-Radius = 6.8 ;%radius of circle trajectory (m)
+Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
 w0 = v0 / Radius;%angular velocity (rad/s)
-a0 = 0.2;%original angular (rad)
+a0 = atan(1.35/6.7);%original angular (rad)
 deltaT = (pi/2)/w0;
 t = linspace(0.81, 0.81+deltaT, round(deltaT*24));
 xCenter = 10 + (2.7/2) - 6.7;
 yCenter = 10 - 1.35;
-alpha = a0 + w0*t;
-x = xCenter + cos(alpha);
-
+alpha = a0 + w0*(t - 0.81);
+x = xCenter + Radius*cos(alpha);
+y = yCenter - Radius*sin(alpha);
+hold on;
+plot(x, y, 'r');
                          
 axis([-15 130 -15 70]);%expand minimum of X, Y
 view(0, -90);
