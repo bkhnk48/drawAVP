@@ -3,11 +3,7 @@ function [lastestX, lastestY, lastT] = linearMovement(alpha, velocity, startTime
   x = x0 + velocity*(t - startTime)*cos(alpha);
   y = y0 + velocity*(t - startTime)*sin(alpha);
   hold on;
-  if(color == 'r')
-    plot(x, y, 'r');
-  elseif(color == 'k')
-    plot(x, y, 'k');
-  endif
+  plot(x, y, color);
   lastestX = x(length(x));
   lastestY = y(length(y));
   lastT = endTime;
