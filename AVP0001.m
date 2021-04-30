@@ -46,11 +46,7 @@ rectangle("Position", [-5, 20.8, 5, 20.8 ], "Facecolor",
                           [0.65, 0.16, 0.16]);%Gate 4
 
 v0 = 20/3;%(m/s)
-t = linspace(0, 0.81, round(0.81*24));%(s)
-x = 10 + 1.35;%(m)
-y = 10 + 2.7 - v0*t;%(m)
-hold on;%draw overlay some graphic objects
-plot(x, y, 'r');
+[x0, y0] = linearMovement(-pi/2, v0, 0, 0.81, 10 + 1.35, 10 + 2.7, 'r');
 
 Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
 w0 = v0 / Radius;%angular velocity (rad/s)
@@ -134,5 +130,5 @@ hold on;
 plot(x, y, 'k');
                   
 axis([-15 130 -15 70]);%expand minimum of X, Y
-view(0, -90);
+%view(0, -90);
 title ("Automated valet parking v = 24km/h");
