@@ -49,23 +49,16 @@ v0 = 20/3;%(m/s)
 [x0, y0, lastT] = linearMovement(-pi/2, v0, 0, 0.81, 10 + 1.35, 10 + 2.7, 'r');
 
 Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
-w0 = v0 / Radius;%angular velocity (rad/s)
-a0 = atan(1.35/6.7);%original angular (rad)
-deltaT = (pi/2)/w0;
-t = linspace(0.81, 0.81+deltaT, round(deltaT*24));
+a0 = -atan(1.35/6.7);%original angular (rad)
+
 xCenter = 10 + (2.7/2) - 6.7;
 yCenter = 10 - 1.35;
-alpha = a0 + w0*(t - 0.81);
-x = xCenter + Radius*cos(alpha);
-y = yCenter - Radius*sin(alpha);
-x0 = x(1);
-y0 = y(1);
+
 hold on;
 plot(x0, y0, "-dk");
-hold on;
-plot(x, y, 'r');
-x0 = x(length(x));
-y0 = y(length(y));
+
+[x0, y0, lastT] = curveMovement(a0, -pi/2, v0, lastT, x0, y0, 
+                    xCenter, yCenter, Radius, 'r');
 hold on;
 plot(x0, y0, "-dk");
 lastT = 0.81 + deltaT;
