@@ -52,6 +52,9 @@ y = 10 + 2.7 - v0*t1;%(m)
 hold on;%draw overlay some graphic objects
 plot(x, y, 'r');
 
+Radius = 6.8;%radius of circle trajectory (m)
+w0 = v0 / Radius;%angular velocity
+
                          
 axis([-15 130 -15 70]);%expand minimum of X, Y
 view(0, -90);
