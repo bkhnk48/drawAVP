@@ -123,7 +123,16 @@ plot(x, y0, 'r');
 x0 = x(length(x));
 hold on;
 plot(x0, y0, "-dk");
+xCenter = x0;
+yCenter = y0 + Radius;
+lastT = lastT + ForwardTime;
+t = linspace(lastT, lastT + deltaT, round(deltaT*24));
+alpha = w0*(t - lastT);                  
+x = xCenter + Radius*sin(alpha);
+y = yCenter - Radius*cos(alpha);
+hold on;
+plot(x, y, 'k');
                   
 axis([-15 130 -15 70]);%expand minimum of X, Y
 view(0, -90);
-title ("Automated valet parking v = 24km/h");   
+title ("Automated valet parking v = 24km/h");
