@@ -115,8 +115,15 @@ y0 = y(length(y));
 hold on;
 plot(x0, y0, "-dk");
 lastT = lastT + deltaT;
-
+ForwardTime = 5.5;
+t = linspace(lastT, lastT + ForwardTime, ForwardTime*24);
+x = x0 + v0*(t - lastT);
+hold on;
+plot(x, y0, 'r');
+x0 = x(length(x));
+hold on;
+plot(x0, y0, "-dk");
                   
 axis([-15 130 -15 70]);%expand minimum of X, Y
 view(0, -90);
-title ("Automated valet parking v = 24km/h");
+title ("Automated valet parking v = 24km/h");   
