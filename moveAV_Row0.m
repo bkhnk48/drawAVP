@@ -3,9 +3,6 @@ function res = moveAV_Row0(row, column, v0)
   deltaX = column*2*1.35;
   
   deltaY = row*5.4;
-  %if(column == 2)
-  %  deltaX = 4*1.35;
-  %endif;
   [x0, y0, lastT] = linearMovement(-pi/2, v0, 0, (row + 1)*5.4/v0, 10 + 1.35 + deltaX, 
                                         10 + 2.7 + deltaY, 'r');
 
@@ -27,10 +24,6 @@ function res = moveAV_Row0(row, column, v0)
     [x0, y0, lastT] = linearMovement(0, v0, lastT, lastT + 0.6, x0, y0, 'r');
   elseif(column == 2)
     [x0, y0, lastT] = linearMovement(pi, v0, lastT, lastT + 0.2, x0, y0, 'r');
-  %elseif(column == 4)
-  %  [x0, y0, lastT] = linearMovement(pi, v0, lastT, lastT + 1.01, x0, y0, 'r');
-  %elseif(column == 7)
-  %  [x0, y0, lastT] = linearMovement(pi, v0, lastT, lastT + 1.01, x0, y0, 'r');
   elseif(column > 2)
     deltaT = (column - 2)*2.7/v0;
     [x0, y0, lastT] = linearMovement(pi, v0, lastT, lastT + 0.2 + deltaT, x0, y0, 'r');
