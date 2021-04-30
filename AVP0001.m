@@ -1,5 +1,7 @@
 clf;
 axis equal;
+
+
 for i = 0: 34
     for j = 0: 2
       if(((j == 0) && (i == 0 || i == 2 || i == 4 || i == 7 || i == 8))
@@ -29,6 +31,8 @@ for i = 0: 34
     endfor;
 endfor;
 
+
+
 rectangle("Position", [0, 0, 10 + 2.7*35 + 10, 10 + 5.4*3 + 10 + 5.4*3 + 10 ]);
                       %boundary
 
@@ -40,6 +44,15 @@ rectangle("Position", [10 + 2.7*17.5 - 10.4, 10 + 5.4*3 + 10 + 5.4*3 + 10, 20.8,
                         "Facecolor", [1, 0, 0]);%Gate 3                        
 rectangle("Position", [-5, 20.8, 5, 20.8 ], "Facecolor", 
                           [0.65, 0.16, 0.16]);%Gate 4
-                        
-axis([-5 inf -5 inf]);%expand minimum of X, Y
+
+v0 = 20/3;%(m/s)
+t1 = linspace(0, 0.81, 800);%(s)
+x = 10 + 1.35;%(m)
+y = 10 + 2.7 - v0*t1;%(m)
+hold on;%draw overlay some graphic objects
+plot(x, y, 'k');
+
+                         
+axis([-15 130 -15 70]);%expand minimum of X, Y
 view(0, -90);
+title ("Automated valet parking v = 24km/h");
