@@ -1,10 +1,13 @@
-function res = moveAV_Row0(column, v0)
+function res = moveAV_Row0(row, column, v0)
   %%%==========Movement of AV[0, 0] - row 0, column 0===========
   deltaX = column*2*1.35;
+  
+  deltaY = row*5.4;
   %if(column == 2)
   %  deltaX = 4*1.35;
   %endif;
-  [x0, y0, lastT] = linearMovement(-pi/2, v0, 0, 0.81, 10 + 1.35 + deltaX, 10 + 2.7, 'r');
+  [x0, y0, lastT] = linearMovement(-pi/2, v0, 0, (row + 1)*5.4/v0, 10 + 1.35 + deltaX, 
+                                        10 + 2.7 + deltaY, 'r');
 
   Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
   a0 = atan(1.35/6.7);%original angular (rad)
