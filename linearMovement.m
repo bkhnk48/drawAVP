@@ -11,4 +11,4 @@ function [lastestX, lastestY, lastT] = linearMovement(alpha, velocity, startTime
   lastestX = x(length(x));
   lastestY = y(length(y));
   lastT = endTime;
- end
+ endfunction
