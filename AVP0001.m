@@ -62,9 +62,23 @@ yCenter = 10 - 1.35;
 alpha = a0 + w0*(t - 0.81);
 x = xCenter + Radius*cos(alpha);
 y = yCenter - Radius*sin(alpha);
+x0 = x(1);
+y0 = y(1);
+hold on;
+plot(x0, y0, "-dk");
 hold on;
 plot(x, y, 'r');
-                         
+x0 = x(length(x));
+y0 = y(length(y));
+hold on;
+plot(x0, y0, "-dk");
+lastT = 0.81 + deltaT;
+t = linspace(lastT, lastT + 1, 24);
+x = x0 + v0*(t - lastT);
+hold on;
+plot(x, y0, 'r');
+                  
+                  
 axis([-15 130 -15 70]);%expand minimum of X, Y
 view(0, -90);
 title ("Automated valet parking v = 24km/h");
