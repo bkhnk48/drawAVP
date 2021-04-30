@@ -50,7 +50,7 @@ t1 = linspace(0, 0.81, 800);%(s)
 x = 10 + 1.35;%(m)
 y = 10 + 2.7 - v0*t1;%(m)
 hold on;%draw overlay some graphic objects
-plot(x, y, 'k');
+plot(x, y, 'r');
 
                          
 axis([-15 130 -15 70]);%expand minimum of X, Y
