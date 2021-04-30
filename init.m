@@ -42,4 +42,4 @@ endfor;
   rectangle("Position", [-5, 20.8, 5, 20.8 ], "Facecolor", 
                             [0.65, 0.16, 0.16]);%Gate 4
   res = 0;
-end                           
+endfunction                           
