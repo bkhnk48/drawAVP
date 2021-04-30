@@ -69,13 +69,13 @@ y0 = y(length(y));
 hold on;
 plot(x0, y0, "-dk");
 lastT = 0.81 + deltaT;
-t = linspace(lastT, lastT + 1, 24);
-x = x0 + v0*(t - lastT);
+
+[x0, y0] = linearMovement(0, v0, lastT, lastT + 1, x0, y0, 'r');
+
 hold on;
-plot(x, y0, 'r');
-hold on;
-plot(x(length(x)), y0, "-dk");
-xCenter = x(length(x));
+plot(x0, y0, "-dk");
+
+xCenter = x0;
 yCenter = y0 + Radius;
 lastT = lastT + 1;
 t = linspace(lastT, lastT + deltaT, round(deltaT*24));
@@ -89,16 +89,15 @@ x0 = x(length(x));
 y0 = y(length(y));
 hold on;
 plot(x0, y0, "-dk");
+
 ForwardTime = 6.7;
-t = linspace(lastT, lastT + ForwardTime, ForwardTime*24);
-y = y0 + v0*(t - lastT);
-hold on;
-plot(x0, y, 'r');
-y0 = y(length(y));
+[x0, y0] = linearMovement(pi/2, v0, lastT, lastT + ForwardTime, x0, y0, 'r');
+
 hold on;
 plot(x0, y0, "-dk");
 xCenter = x0 + Radius;
 yCenter = y0;
+
 lastT = lastT + ForwardTime;
 t = linspace(lastT, lastT + deltaT, round(deltaT*24));
 alpha = w0*(t - lastT);                  
@@ -110,13 +109,10 @@ x0 = x(length(x));
 y0 = y(length(y));
 hold on;
 plot(x0, y0, "-dk");
+
 lastT = lastT + deltaT;
 ForwardTime = 5.5;
-t = linspace(lastT, lastT + ForwardTime, ForwardTime*24);
-x = x0 + v0*(t - lastT);
-hold on;
-plot(x, y0, 'r');
-x0 = x(length(x));
+[x0, y0] = linearMovement(0, v0, lastT, lastT + ForwardTime, x0, y0, 'r');
 hold on;
 plot(x0, y0, "-dk");
 xCenter = x0;
