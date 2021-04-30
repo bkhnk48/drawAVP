@@ -9,11 +9,7 @@ function [lastestX, lastestY, lastT] = curveMovement(a0, alpha, velocity, startT
   x = xCenter + R*cos(a);
   y = yCenter + R*sin(a);
   hold on;
-  if(color == 'r')
-    plot(x, y, 'r');
-  elseif(color == 'k')
-    plot(x, y, 'k');
-  endif;
+  plot(x, y, color);
   lastestX = x(length(x));
   lastestY = y(length(y));
   lastT = startTime + deltaT;
