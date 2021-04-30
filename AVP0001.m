@@ -46,15 +46,21 @@ rectangle("Position", [-5, 20.8, 5, 20.8 ], "Facecolor",
                           [0.65, 0.16, 0.16]);%Gate 4
 
 v0 = 20/3;%(m/s)
-t1 = linspace(0, 0.81, 800);%(s)
+t = linspace(0, 0.81, round(0.81*24));%(s)
 x = 10 + 1.35;%(m)
-y = 10 + 2.7 - v0*t1;%(m)
+y = 10 + 2.7 - v0*t;%(m)
 hold on;%draw overlay some graphic objects
 plot(x, y, 'r');
 
-Radius = 6.8;%radius of circle trajectory (m)
+Radius = 6.8 ;%radius of circle trajectory (m)
 w0 = v0 / Radius;%angular velocity (rad/s)
 a0 = 0.2;%original angular (rad)
+deltaT = (pi/2)/w0;
+t = linspace(0.81, 0.81+deltaT, round(deltaT*24));
+xCenter = 10 + (2.7/2) - 6.7;
+yCenter = 10 - 1.35;
+alpha = a0 + w0*t;
+x = xCenter + cos(alpha);
 
                          
 axis([-15 130 -15 70]);%expand minimum of X, Y
