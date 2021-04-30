@@ -93,8 +93,8 @@ x0 = x(length(x));
 y0 = y(length(y));
 hold on;
 plot(x0, y0, "-dk");
-TurningTime = 6.7;
-t = linspace(lastT, lastT + TurningTime, TurningTime*24);
+ForwardTime = 6.7;
+t = linspace(lastT, lastT + ForwardTime, ForwardTime*24);
 y = y0 + v0*(t - lastT);
 hold on;
 plot(x0, y, 'r');
@@ -103,14 +103,18 @@ hold on;
 plot(x0, y0, "-dk");
 xCenter = x0 + Radius;
 yCenter = y0;
-lastT = lastT + TurningTime;
+lastT = lastT + ForwardTime;
 t = linspace(lastT, lastT + deltaT, round(deltaT*24));
 alpha = w0*(t - lastT);                  
 x = xCenter - Radius*cos(alpha);
 y = yCenter + Radius*sin(alpha);
 hold on;
 plot(x, y, 'r');
-
+x0 = x(length(x));
+y0 = y(length(y));
+hold on;
+plot(x0, y0, "-dk");
+lastT = lastT + deltaT;
 
                   
 axis([-15 130 -15 70]);%expand minimum of X, Y
