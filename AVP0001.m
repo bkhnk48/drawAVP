@@ -77,7 +77,17 @@ t = linspace(lastT, lastT + 1, 24);
 x = x0 + v0*(t - lastT);
 hold on;
 plot(x, y0, 'r');
-                  
+hold on;
+plot(x(length(x)), y0, "-dk");
+xCenter = x(length(x));
+yCenter = y0 + Radius;
+lastT = lastT + 1;
+t = linspace(lastT, lastT + deltaT, round(deltaT*24));
+alpha = w0*(t - lastT);                  
+x = xCenter - Radius*sin(alpha);
+y = yCenter - Radius*cos(alpha);
+hold on;
+plot(x, y, 'r');
                   
 axis([-15 130 -15 70]);%expand minimum of X, Y
 view(0, -90);
