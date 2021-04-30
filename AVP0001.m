@@ -5,6 +5,8 @@ axis equal;
 res = init();
 
 v0 = 20/3;%(m/s)
+
+%%%==========Movement of AV[0, 0] - row 0, column 0===========
 [x0, y0, lastT] = linearMovement(-pi/2, v0, 0, 0.81, 10 + 1.35, 10 + 2.7, 'r');
 
 Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
@@ -60,7 +62,8 @@ yCenter = y0 + 6.7;
 
 [x0, y0, lastT] = curveMovement(a0 - pi/2, pi/2, v0, lastT, x0, y0, 
                     xCenter, yCenter, Radius, 'k');
-
+%%%==========End of Movement of AV[0, 0] - row 0, column 0===========
+                    
                   
 axis([-15 130 -15 70]);%expand minimum of X, Y
 %view(0, -90);
