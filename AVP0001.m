@@ -54,6 +54,7 @@ plot(x, y, 'r');
 
 Radius = 6.8;%radius of circle trajectory (m)
 w0 = v0 / Radius;%angular velocity
+a0 = 0.2;%radian, original angular
 
                          
 axis([-15 130 -15 70]);%expand minimum of X, Y
