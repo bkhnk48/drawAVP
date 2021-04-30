@@ -1,4 +1,4 @@
-function [lastestX, lastestY] = linearMovement(alpha, velocity, startTime, endTime, x0, y0, color)
+function [lastestX, lastestY, lastT] = linearMovement(alpha, velocity, startTime, endTime, x0, y0, color)
   t = linspace(startTime, endTime, round((endTime - startTime)*24));
   x = x0 + velocity*(t - startTime)*cos(alpha);
   y = y0 + velocity*(t - startTime)*sin(alpha);
@@ -10,4 +10,5 @@ function [lastestX, lastestY] = linearMovement(alpha, velocity, startTime, endTi
   endif
   lastestX = x(length(x));
   lastestY = y(length(y));
+  lastT = endTime;
  end
