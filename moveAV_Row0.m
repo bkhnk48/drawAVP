@@ -15,8 +15,30 @@ function [res] = moveAV_Row0(stack, row, column, v0)
   xCenter = x0 - 6.7;
   yCenter = y0 - 1.35;
 
-  [SecondTrajectory, lastT] = curveMovement(a0, pi/2, v0, lastT, 
+  [SecondTrajectory, lastT] = curveMovement(a0, a0, pi/2, v0, lastT, 
                      xCenter, yCenter, Radius);
-                      
-  res = [FirstTrajectory, SecondTrajectory];
+                     
+  XY = SecondTrajectory(:, columns(SecondTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);                  
+  
+  [ThirdTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + 0.62, x0, y0); 
+ 
+  XY = ThirdTrajectory(:, columns(ThirdTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  xCenter = x0 + 1.35;
+  yCenter = y0 - 6.7;
+
+  [FourthTrajectory, lastT] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, 
+                     xCenter, yCenter, Radius); 
+  res = [FirstTrajectory, SecondTrajectory, ThirdTrajectory, FourthTrajectory];
+  XY = FourthTrajectory(:, columns(FourthTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  
+  [FifthTrajectory, lastT] = linearMovement(-pi/2, v0, lastT, lastT + 6.5, x0, y0);
+  
+  res = [res, FifthTrajectory];
+  
 endfunction
