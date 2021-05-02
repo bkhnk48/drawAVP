@@ -6,6 +6,6 @@ function [Coord, lastT] = linearMovement(alpha, velocity, startTime, endTime, x0
   v = [alpha];
   v = repelem(v, length(y));
   v = v';
-  Coord = [x; y; v];
+  Coord = [x; y; v; t];
   lastT = endTime;
  endfunction
