@@ -17,8 +17,9 @@ function res = animate(Coord)
       temp = init();
       R = [ cos(theta)    -sin(theta) ; sin(theta)     cos(theta) ] ;
       
-      D = [(X - 1.35) (X + 1.35) (X + 1.35) (X - 1.35) (X - 1.35); (Y - 2.7) (Y - 2.7) (Y + 2.7) (Y + 2.7) (Y - 2.7)];
+      D = [(-1.35) (1.35) (1.35) (-1.35) (-1.35); (-2.7) (-2.7) (2.7) (2.7) (-2.7)];
       D1 = R*D;
+      D1 = D1 + [X X X X X; Y Y Y Y Y];
       x = D1(1, :);
       y = D1(2, :);
       
