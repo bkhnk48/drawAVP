@@ -15,8 +15,8 @@ function [res] = moveAV_Row0(stack, row, column, v0)
   xCenter = x0 - 6.7;
   yCenter = y0 - 1.35;
 
-  [SecondTrajectory, lastT] = curveMovement(a0, pi/2, v0, lastT, x0, y0, 
-                     xCenter, yCenter, Radius, 'r');
+  [SecondTrajectory, lastT] = curveMovement(a0, pi/2, v0, lastT, 
+                     xCenter, yCenter, Radius);
                       
   res = [FirstTrajectory, SecondTrajectory];
 endfunction
