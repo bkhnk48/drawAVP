@@ -1,4 +1,4 @@
-function [Coord, lastT] = curveMovement(a0, alpha, velocity, startTime, x0, y0, xCenter, yCenter, R, color)
+function [Coord, lastT] = curveMovement(a0, alpha, velocity, startTime, xCenter, yCenter, R)
   w0 = velocity / R;
   deltaT = abs(alpha)/w0;
   if(alpha < 0)
