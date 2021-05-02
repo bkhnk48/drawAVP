@@ -1,4 +1,4 @@
-function [Coord, lastT] = curveMovement(a0, alpha, velocity, startTime, xCenter, yCenter, R)
+function [Coord, lastT] = curveMovement(a0, rotationA0, alpha, velocity, startTime, xCenter, yCenter, R)
   w0 = velocity / R;
   deltaT = abs(alpha)/w0;
   if(alpha < 0)
@@ -8,7 +8,7 @@ function [Coord, lastT] = curveMovement(a0, alpha, velocity, startTime, xCenter,
   a = a0 + w0*(t - startTime);
   x = xCenter + R*cos(a);
   y = yCenter + R*sin(a);
-  a = a - a0;
-  Coord = [x; y; a];
+  a = a - rotationA0;
+  Coord = [x; y; a; t];
   lastT = startTime + deltaT;
 endfunction
