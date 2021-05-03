@@ -41,4 +41,32 @@ function [res] = moveAV_Row0(stack, row, column, v0)
   
   res = [res, FifthTrajectory];
   
+  XY = FifthTrajectory(:, columns(FifthTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  xCenter = x0 + 6.7;
+  yCenter = y0 + 1.35;
+  
+  [SixthTrajectory, lastT] = curveMovement(a0 + pi, a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
+  
+  res = [res, SixthTrajectory];
+  
+  XY = SixthTrajectory(:, columns(SixthTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  
+  [SeventhTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + 5.5, x0, y0); 
+  res = [res, SeventhTrajectory];
+  
+  XY = SeventhTrajectory(:, columns(SeventhTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  xCenter = x0 - 1.35;
+  yCenter = y0 - 6.7;
+  
+  [EighthTrajectory, lastT] = curveMovement(-a0 + pi/2, a0, -pi/2, v0, lastT, xCenter, yCenter, Radius); 
+  
+  res = [res, EighthTrajectory];
+
+  
 endfunction
