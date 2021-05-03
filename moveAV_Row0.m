@@ -64,7 +64,7 @@ function [res] = moveAV_Row0(stack, row, column, v0)
   xCenter = x0 - 1.35;
   yCenter = y0 - 6.7;
   
-  [EighthTrajectory, lastT] = curveMovement(-a0 + pi/2, a0, -pi/2 + a0, v0, lastT, xCenter, yCenter, Radius); 
+  [EighthTrajectory, lastT] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
   
   res = [res, EighthTrajectory];
 
