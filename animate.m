@@ -5,12 +5,13 @@ function res = animate(Coord)
   numOfAVs = height / 4;
   for i = 1: length
     XYA = Coord(:, 1);
-    
-    if(%i <= 30 && 
-      (mod(i - 1, 4) == 0 || i == length))
-      graphics_toolkit('gnuplot');
+    m = mod(i - 1, 4);
+    if((i <= 20) && 
+      (m == 0 || i == length))
+      %graphics_toolkit('gnuplot');
       figure(j + 1);
       hold on;
+      
       temp = init();
       axis([-15 130 -15 70]);%expand minimum of X, Y
       for k = 1 : numOfAVs
@@ -38,7 +39,7 @@ function res = animate(Coord)
       
       %view(0, -90);
       title ("Automated Valet Parking v = 24km/h");
-      graphics_toolkit('gnuplot');
+      %graphics_toolkit('gnuplot');
       text = sprintf("AVP%d.png", j);
       saveas(gca, text);
       j = j + 1;
