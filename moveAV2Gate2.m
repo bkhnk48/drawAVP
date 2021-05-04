@@ -28,10 +28,6 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
   XY = SecondTrajectory(:, columns(SecondTrajectory));
   x0 = XY(1, 1);
   y0 = XY(2, 1); 
-  if(column == 5)
-    printf("Last time of 2th trajectory: %f\n", lastT); 
-  endif;
-  %with colum = 7, the lastT is 2.420377
   
   [ThirdTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0)/v0, x0, 
                                         y0);  
