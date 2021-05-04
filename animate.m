@@ -6,14 +6,15 @@ function res = animate(Coord)
   for i = 1: length
     XYA = Coord(:, 1);
     m = mod(i - 1, 4);
-    if((i <= 20) && 
+    if(%(i <= 20) && 
+      %(i >= 170) &&
       (m == 0 || i == length))
       %graphics_toolkit('gnuplot');
       figure(j + 1);
       hold on;
       
       temp = init();
-      axis([-15 130 -15 70]);%expand minimum of X, Y
+      axis([-15 130 -15 70], 'equal');%expand minimum of X, Y
       for k = 1 : numOfAVs
         X = XYA(4*(k - 1) + 1, 1);
         Y = XYA(4*(k - 1) + 2, 1);
