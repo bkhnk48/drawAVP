@@ -63,6 +63,24 @@ function [res] = moveAV2Gate1(stack, row, column, v0, otherCar)
                       xCenter, yCenter, Radius);
   res = [res, SixthTrajectory];
   
+  XY = SixthTrajectory(:, columns(SixthTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  
+  [SeventhTrajectory, lastT] = linearMovement(pi, v0, lastT, lastT + (x0 - (WIDTH/2) - (2.7*4))/v0, x0, 
+                                        y0); 
+  res = [res, SeventhTrajectory];
+  
+  XY = SeventhTrajectory(:, columns(SeventhTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  xCenter = x0 + 1.35;
+  yCenter = y0 + 6.7;
+  
+  [EighthTrajectory, lastT] = curveMovement(-a0 + 3*(pi/2), -a0, -pi/2, v0, lastT,  
+                      xCenter, yCenter, Radius);
+  res = [res, EighthTrajectory];
+  
   if(rows(otherCar) != 0 && columns(otherCar) != 0)  
     [res] = merge(otherCar, res);
   endif;
