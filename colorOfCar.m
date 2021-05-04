@@ -1,4 +1,5 @@
 function res = colorOfCar(index)
+  color = 'r-';
   switch(index)
     case 1
       color = 'r-';
@@ -6,10 +7,8 @@ function res = colorOfCar(index)
       color = 'r-';
     case 3
       color = 'b-';
+    case 4
+      color = 'b-';
   endswitch;
-  %color = 'r-';
-  %if(index == 2)
-  %  color = 'b-';
-  %endif;
   res = color;
 endfunction
