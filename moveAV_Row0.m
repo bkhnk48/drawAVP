@@ -29,7 +29,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     XY = ThirdTrajectory(:, columns(ThirdTrajectory));
     x0 = XY(1, 1);
     y0 = XY(2, 1);
-    printf("AV1: Prepare for curve: (%f, %f)\n", x0, y0);
+    %printf("AV1: Prepare for curve: (%f, %f)\n", x0, y0);
     xCenter = x0 + 1.35;
     yCenter = y0 - 6.7;
 
@@ -94,7 +94,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     XY = ThirdTrajectory(:, columns(ThirdTrajectory));
     x0 = XY(1, 1);
     y0 = XY(2, 1);
-    printf("AV2: Prepare for 1/2 curve: (%f, %f)\n", x0 + 6.7, y0 + 6.7 );
+    %printf("AV2: Prepare for 1/2 curve: (%f, %f)\n", x0 + 6.7, y0 + 6.7 );
 
     [ForthTrajectory, lastT] = linearMovement(-pi/2, v0, lastT, lastT + 6.5, x0, y0);
     res = [res, ForthTrajectory];  
