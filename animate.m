@@ -10,7 +10,7 @@ function res = animate(Coord)
       %(i >= 170) &&
       (m == 0 || i == length))
       %graphics_toolkit('gnuplot');
-      figure(j + 1);
+      f = figure(j + 1);
       hold on;
       
       temp = init();
@@ -43,6 +43,7 @@ function res = animate(Coord)
       %graphics_toolkit('gnuplot');
       text = sprintf("AVP%d.png", j);
       saveas(gca, text);
+      close(f);
       j = j + 1;
       printf("\n");
     endif;
