@@ -9,6 +9,10 @@ function res = colorOfCar(index)
       color = 'b-';
     case 4
       color = 'b-';
+    case 5
+      color = 'b-';
+    case 6
+      color = 'k-';
   endswitch;
   res = color;
 endfunction
