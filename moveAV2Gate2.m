@@ -1,12 +1,9 @@
 function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
   lastT = 0;
   res = [];
-  WIDTH = 10 + 35*2.7 + 10;%width of car parking lot
+  [WIDTH, HEIGHT, Radius, a0] = configuration();
   deltaX = column*2*1.35;
-  
   deltaY = (5 - (row + (1 - stack)*3))*5.4;%stack tinh tu duoi len (!)
-  Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
-  a0 = atan(1.35/6.7);%original angular (rad)
     
   %====Movement of AV in stack 1, row 2====
   if(stack == 1 && row == 2)
