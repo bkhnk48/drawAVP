@@ -7,7 +7,7 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
   deltaY = (5 - (row + (1 - stack)*3))*5.4;%stack tinh tu duoi len (!)
   
   if(column == 5)
-    [ZeroTrajectory, lastT] = waitFor(0, 2.420377, 10 + 1.35 + deltaX, 
+    [ZeroTrajectory, lastT] = waitFor(0, 3.420377, 10 + 1.35 + deltaX, 
                                         10 + 2.7 + deltaY + 10, 0);
     [res] = [ZeroTrajectory];                                    
   endif;
@@ -29,7 +29,7 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
   x0 = XY(1, 1);
   y0 = XY(2, 1); 
   
-  [ThirdTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0)/v0, x0, 
+  [ThirdTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
                                         y0);  
   res = [res, FirstTrajectory, SecondTrajectory, ThirdTrajectory];
   if(rows(otherCar) != 0 && columns(otherCar) != 0)
