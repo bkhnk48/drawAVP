@@ -54,13 +54,19 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     [EighthTrajectory, lastT, x0, y0] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, EighthTrajectory];
-  elseif(stack == 1 && row == 0 && column == 2)
+    
+    [NinethTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + (2.7/v0), x0, 
+                                        y0); 
+    res = [res, NinethTrajectory];
+  elseif(stack == 1 && row == 0 && (column == 2))
+    waitingTime = 4.650755;
+    
     %%%==========Movement of AV[1, 0, 2] - stack 1, row 0, column 2===========
-    [FirstTrajectory, lastT] = waitFor(0, 4.650755, 10 + 1.35 + deltaX, 
+    [FirstTrajectory, lastT] = waitFor(0, waitingTime, 10 + 1.35 + deltaX, 
                                           10 + stack*10 + 2.7 + deltaY, 0);
     res = [FirstTrajectory];
     
-    [SecondTrajectory, lastT, x0, y0] = linearMovement(pi/2, v0, 0, (row + 1)*5.4/v0, 10 + 1.35 + deltaX, 
+    [SecondTrajectory, lastT, x0, y0] = linearMovement(pi/2, v0, lastT, lastT + ((row + 1)*5.4/v0), 10 + 1.35 + deltaX, 
                                           10 + stack*10 + 2.7 + deltaY);
     res = [res, SecondTrajectory];
     
@@ -69,6 +75,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
 
     [ThirdTrajectory, lastT, x0, y0] = curveMovement(a0, a0, pi, v0, lastT, 
                        xCenter, yCenter, Radius);
+    
     res = [res, ThirdTrajectory];         
   
     
@@ -91,10 +98,63 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     [SeventhTrajectory, lastT, x0, y0] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, SeventhTrajectory];
+    
+    [EighthTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + (2.7/v0), x0, 
+                                        y0); 
+    res = [res, EighthTrajectory];
 
   else
     res = [0];
   endif;
+  
+  if(stack == 1 && row == 0 && (column == 7 || column == 8))
+    if(column == 7)
+      waitingTime = 4.650755;
+    elseif(column == 8)
+      waitingTime = 8.681510;
+    endif;
+    [FirstTrajectory, lastT] = waitFor(0, waitingTime, 10 + 1.35 + deltaX, 
+                                          10 + stack*10 + 2.7 + deltaY, 0);
+    res = [FirstTrajectory];
+    
+    [SecondTrajectory, lastT, x0, y0] = linearMovement(pi/2, v0, lastT, lastT + ((row + 1)*5.4/v0), 10 + 1.35 + deltaX, 
+                                          10 + stack*10 + 2.7 + deltaY);
+    res = [res, SecondTrajectory];
+    
+    xCenter = x0 - 6.7;
+    yCenter = y0 - 1.35;
+
+    [ThirdTrajectory, lastT, x0, y0] = curveMovement(a0, a0, pi/2, v0, lastT, 
+                       xCenter, yCenter, Radius);
+    
+    res = [res, ThirdTrajectory];         
+  
+    
+    [ForthTrajectory, lastT, x0, y0] = linearMovement(pi, v0, lastT, lastT + (4*2.7/v0), x0, y0);
+    res = [res, ForthTrajectory];  
+    
+    xCenter = x0 + 1.35;
+    yCenter = y0 - 6.7;
+    
+    [FifthTrajectory, lastT, x0, y0] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
+    
+    res = [res, FifthTrajectory];
+
+    [SixthTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + 6.5, x0, y0); 
+    res = [res, SixthTrajectory];
+    
+    xCenter = x0 - 1.35;
+    yCenter = y0 - 6.7;
+    
+    [SeventhTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
+    
+    res = [res, SeventhTrajectory];
+    
+    [EighthTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + (2.7/v0), x0, 
+                                        y0); 
+    res = [res, EighthTrajectory];
+  endif;
+  
   if(rows(res) != 0 && columns(res) != 0)
     if(rows(otherAV) != 0 && columns(otherAV) != 0)
       res = merge(otherAV, res);
