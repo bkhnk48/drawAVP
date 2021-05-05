@@ -15,9 +15,6 @@ v0 = 20/3;%(m/s)
 %===movement of AV[0,4]===
 %res = moveAV_Row0(0, 4, v0);
 
-%===movement of AV[0,7]===
-%res = moveAV_Row0(0, 7, v0);
-
 %===movement of AV[0,8]===
 %res = moveAV_Row0(0, 8, v0);
 
@@ -39,4 +36,10 @@ v0 = 20/3;%(m/s)
 %===movement of AV[2,4]===
 [res7] = moveAV2Gate2(1, 1, 7, v0, res6);
 
-ret = animate(res7);
+%===movement of AV[0,7]===
+[res8] = moveAV_Row0(1, 0, 7, v0, res7);
+
+%===movement of AV[0,8]===
+[res9] = moveAV_Row0(1, 0, 8, v0, res8);
+
+ret = animate(res9);
