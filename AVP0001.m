@@ -36,4 +36,7 @@ v0 = 20/3;%(m/s)
 %===movement of AV[2,1]===
 [res6] = moveAV2Gate1(1, 2, 1, v0, res5);
 
-ret = animate(res6);
+%===movement of AV[2,4]===
+[res7] = moveAV2Gate2(1, 1, 7, v0, res6);
+
+ret = animate(res7);
