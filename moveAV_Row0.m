@@ -24,6 +24,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
    
     xCenter = x0 + 1.35;
     yCenter = y0 - 6.7;
+    printf("Turn left at x0 = %f, y0 = %f\n", x0, y0);
 
     [FourthTrajectory, lastT, x0, y0] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, 
                        xCenter, yCenter, Radius); 
@@ -129,8 +130,8 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     
     res = [res, ThirdTrajectory];         
   
-    
-    [ForthTrajectory, lastT, x0, y0] = linearMovement(pi, v0, lastT, lastT + (4*2.7/v0), x0, y0);
+    %8.166667 la gia tri cua x0, noi ma xe AV1 (row 0, col 0) re trai de di xuong
+    [ForthTrajectory, lastT, x0, y0] = linearMovement(pi, v0, lastT, lastT + (abs( 8.166667 - x0)/v0), x0, y0);
     res = [res, ForthTrajectory];  
     
     xCenter = x0 + 1.35;
