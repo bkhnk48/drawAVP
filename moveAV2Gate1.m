@@ -81,6 +81,14 @@ function [res] = moveAV2Gate1(stack, row, column, v0, otherCar)
                       xCenter, yCenter, Radius);
   res = [res, EighthTrajectory];
   
+  XY = EighthTrajectory(:, columns(EighthTrajectory));
+  x0 = XY(1, 1);
+  y0 = XY(2, 1);
+  
+  [NinethTrajectory, lastT] = linearMovement(pi/2, v0, lastT, lastT + (2.7/v0), x0, 
+                                        y0); 
+  res = [res, NinethTrajectory];
+  
   if(rows(otherCar) != 0 && columns(otherCar) != 0)  
     [res] = merge(otherCar, res);
   endif;
