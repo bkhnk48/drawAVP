@@ -16,12 +16,12 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 - 6.7;
     yCenter = y0 - 1.35;
 
-    [SecondTrajectory, lastT] = curveMovement(a0, a0, pi/2, v0, lastT, 
+    [SecondTrajectory, lastT, x0, y0] = curveMovement(a0, a0, pi/2, v0, lastT, 
                        xCenter, yCenter, Radius);
                        
-    XY = SecondTrajectory(:, columns(SecondTrajectory));
-    x0 = XY(1, 1);
-    y0 = XY(2, 1);                  
+    %XY = SecondTrajectory(:, columns(SecondTrajectory));
+    %x0 = XY(1, 1);
+    %y0 = XY(2, 1);                  
     
     [ThirdTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + 0.73, x0, y0); 
    
@@ -32,13 +32,13 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 + 1.35;
     yCenter = y0 - 6.7;
 
-    [FourthTrajectory, lastT] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, 
+    [FourthTrajectory, lastT, x0, y0] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, 
                        xCenter, yCenter, Radius); 
     
     res = [FirstTrajectory, SecondTrajectory, ThirdTrajectory, FourthTrajectory];
-    XY = FourthTrajectory(:, columns(FourthTrajectory));
-    x0 = XY(1, 1);
-    y0 = XY(2, 1);
+    %XY = FourthTrajectory(:, columns(FourthTrajectory));
+    %x0 = XY(1, 1);
+    %y0 = XY(2, 1);
     
     [FifthTrajectory, lastT] = linearMovement(-pi/2, v0, lastT, lastT + 6.5, x0, y0);
     
@@ -50,13 +50,13 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 + 6.7;
     yCenter = y0 + 1.35;
     
-    [SixthTrajectory, lastT] = curveMovement(a0 + pi, a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
+    [SixthTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, SixthTrajectory];
     
-    XY = SixthTrajectory(:, columns(SixthTrajectory));
-    x0 = XY(1, 1);
-    y0 = XY(2, 1);
+    %XY = SixthTrajectory(:, columns(SixthTrajectory));
+    %x0 = XY(1, 1);
+    %y0 = XY(2, 1);
     
     [SeventhTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + 5.5, x0, y0); 
     res = [res, SeventhTrajectory];
@@ -67,7 +67,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 - 1.35;
     yCenter = y0 - 6.7;
     
-    [EighthTrajectory, lastT] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
+    [EighthTrajectory, lastT, x0, y0] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, EighthTrajectory];
   elseif(stack == 1 && row == 0 && column == 2)
@@ -86,13 +86,13 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 - 6.7;
     yCenter = y0 - 1.35;
 
-    [ThirdTrajectory, lastT] = curveMovement(a0, a0, pi, v0, lastT, 
+    [ThirdTrajectory, lastT, x0, y0] = curveMovement(a0, a0, pi, v0, lastT, 
                        xCenter, yCenter, Radius);
     res = [res, ThirdTrajectory];         
   
-    XY = ThirdTrajectory(:, columns(ThirdTrajectory));
-    x0 = XY(1, 1);
-    y0 = XY(2, 1);
+    %XY = ThirdTrajectory(:, columns(ThirdTrajectory));
+    %x0 = XY(1, 1);
+    %y0 = XY(2, 1);
     %printf("AV2: Prepare for 1/2 curve: (%f, %f)\n", x0 + 6.7, y0 + 6.7 );
 
     [ForthTrajectory, lastT] = linearMovement(-pi/2, v0, lastT, lastT + 6.5, x0, y0);
@@ -104,13 +104,13 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 + 6.7;
     yCenter = y0 + 1.35;
     
-    [FifthTrajectory, lastT] = curveMovement(a0 + pi, a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
+    [FifthTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, FifthTrajectory];
 
-    XY = FifthTrajectory(:, columns(FifthTrajectory));
-    x0 = XY(1, 1);
-    y0 = XY(2, 1);
+    %XY = FifthTrajectory(:, columns(FifthTrajectory));
+    %x0 = XY(1, 1);
+    %y0 = XY(2, 1);
     
     [SixthTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + 5.5, x0, y0); 
     res = [res, SixthTrajectory];
@@ -121,7 +121,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 - 1.35;
     yCenter = y0 - 6.7;
     
-    [SeventhTrajectory, lastT] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
+    [SeventhTrajectory, lastT, x0, y0] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, SeventhTrajectory];
     %[FifthTrajectory, lastT] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, 
