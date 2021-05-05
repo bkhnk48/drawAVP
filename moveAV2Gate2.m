@@ -12,25 +12,16 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
                                           10 + 2.7 + deltaY + 10, 0);
       [res] = [ZeroTrajectory];                                    
     endif;
-    [FirstTrajectory, lastT] = linearMovement(-pi/2, v0, 0 + lastT, lastT + (3 - row)*5.4/v0, 10 + 1.35 + deltaX, 
+    [FirstTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, 0 + lastT, lastT + (3 - row)*5.4/v0, 10 + 1.35 + deltaX, 
                                           10 + 2.7 + deltaY + 10);
                                           
-    XY = FirstTrajectory(:, columns(FirstTrajectory));
-    x0 = XY(1, 1);
-    y0 = XY(2, 1);
     xCenter = x0 + 6.7;
     yCenter = y0 + 1.35;
 
     [SecondTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT,  
                         xCenter, yCenter, Radius);
-    %if(column == 5)
-      %printf("Last time of curve movement: %f\n", lastT);
-    %endif;    
-    %XY = SecondTrajectory(:, columns(SecondTrajectory));
-    %x0 = XY(1, 1);
-    %y0 = XY(2, 1); 
     
-    [ThirdTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
+    [ThirdTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
                                           y0);  
     res = [res, FirstTrajectory, SecondTrajectory, ThirdTrajectory];
   endif;
@@ -43,24 +34,18 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
                                           10 + 2.7 + deltaY + 10, 0);
     [res] = [ZeroTrajectory];     
     
-    [FirstTrajectory, lastT] = linearMovement(-pi/2, v0, 0 + lastT, lastT + (2*5.4/v0), 10 + 1.35 + deltaX, 
+    [FirstTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, 0 + lastT, lastT + (2*5.4/v0), 10 + 1.35 + deltaX, 
                                           10 + 2.7 + deltaY + 10);
-    XY = FirstTrajectory(:, columns(FirstTrajectory));
-    x0 = XY(1, 1);
-    y0 = XY(2, 1);      
     xCenter = x0 + 6.7;
     yCenter = y0 + 1.35; 
 
     [SecondTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT,  
                         xCenter, yCenter, Radius);
-    %XY = SecondTrajectory(:, columns(SecondTrajectory));
-    %x0 = XY(1, 1);
-    %y0 = XY(2, 1);     
     
-    [ThirdTrajectory, lastT] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
+    [ThirdTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
                                           y0);  
     res = [res, FirstTrajectory, SecondTrajectory, ThirdTrajectory];
-                                          % 5.84
+                                   
   endif;
   
   if(rows(otherCar) != 0 && columns(otherCar) != 0)
