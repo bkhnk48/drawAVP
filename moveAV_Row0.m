@@ -149,16 +149,26 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     [SixthTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + 6.5, x0, y0); 
     res = [res, SixthTrajectory];
     
-    xCenter = x0 - 1.35;
-    yCenter = y0 - 6.7;
+    xCenter = x0 + 6.7;
+    yCenter = y0 + 1.35;
     
     [SeventhTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, SeventhTrajectory];
     
-    [EighthTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + (2.7/v0), x0, 
-                                        y0); 
+    [EighthTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + 5.5, x0, y0); 
     res = [res, EighthTrajectory];
+    
+    xCenter = x0 - 1.35;
+    yCenter = y0 - 6.7;
+    
+    [NinethTrajectory, lastT, x0, y0] = curveMovement(-a0 + pi/2, -a0, -pi/2 , v0, lastT, xCenter, yCenter, Radius); 
+    
+    res = [res, NinethTrajectory];
+    
+    [TenthTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + (2.7/v0), x0, 
+                                        y0); 
+    res = [res, TenthTrajectory];
   endif;
   
   if(rows(res) != 0 && columns(res) != 0)
