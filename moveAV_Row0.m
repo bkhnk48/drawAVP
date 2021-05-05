@@ -2,8 +2,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
   deltaX = column*2*1.35;
   deltaY = (5 - (row + (1 - stack)*3))*5.4;
   
-  Radius = sqrt(1.35*1.35 + 6.7*6.7) ;%radius of circle trajectory (m)
-  a0 = atan(1.35/6.7);%original angular (rad)
+  [WIDTH, HEIGHT, Radius, a0] = configuration();
     
   if(stack == 1 && row == 0 && column == 0)
     %%%==========Movement of AV[1, 0, 0] - stack 1, row 0, column 0===========
