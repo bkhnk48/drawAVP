@@ -108,12 +108,12 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     res = [0];
   endif;
   
-  if(stack == 1 && row == 0 && (column == 7 || column == 8 || column == 5))
+  if(stack == 1 && row == 0 && (column == 7 || column == 8 || column == 4))
     if(column == 7)
       waitingTime = 4.650755;
     elseif(column == 8)
       waitingTime = 8.681510;
-    elseif(column == 5)
+    elseif(column == 4)
       waitingTime = 13.611887;%la thoi gian AV (row = 0, col = 8) re trai xuong
     endif;
     [FirstTrajectory, lastT] = waitFor(0, waitingTime, 10 + 1.35 + deltaX, 
