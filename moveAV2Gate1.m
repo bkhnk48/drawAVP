@@ -15,7 +15,7 @@ function [res] = moveAV2Gate1(stack, row, column, v0, otherCar)
   [SecondTrajectory, lastT, x0, y0] = curveMovement(-a0, -a0, -pi/2, v0, lastT,  
                       xCenter, yCenter, Radius);
   
-  %printf("Time for go directly to Gate 2: %f\n", lastT);
+  %printf("Time for go directly to Gate 1: %f\n", lastT);
   
   [ThirdTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + (WIDTH + 1.8 - 10 - x0)/v0, x0, 
                                         y0);  
