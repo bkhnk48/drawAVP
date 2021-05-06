@@ -21,6 +21,9 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
 
     [SecondTrajectory, lastT, x0, y0] = curveMovement(-a0, -a0, -pi/2, v0, lastT,  
                         xCenter, yCenter, Radius);
+    %if(column == 5)                    
+    %  printf("Time of going forward to gate 2 %f\n", lastT);%7.675377
+    %endif;
     
     [ThirdTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
                                           y0);  
@@ -30,7 +33,7 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
   
   %====Movement of AV in stack 1, row 1====
   if(stack == 1 && row == 1 && column == 7)
-    waitingTime = 2.42 + (7*2.7/v0);
+    waitingTime = 7.67 + (3*2.7/v0);
     %waitingTime = 0.3 + 5.84 - (2*5.4/v0)
                   
     [ZeroTrajectory, lastT] = waitFor(0, waitingTime, 10 + 1.35 + deltaX, 
@@ -42,7 +45,7 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
     xCenter = x0 - 6.7;
     yCenter = y0 + 1.35; 
 
-    [SecondTrajectory, lastT, x0, y0] = curveMovement(a0, a0, -pi/2, v0, lastT,  
+    [SecondTrajectory, lastT, x0, y0] = curveMovement(-a0, -a0, -pi/2, v0, lastT,  
                         xCenter, yCenter, Radius);
     
     [ThirdTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
