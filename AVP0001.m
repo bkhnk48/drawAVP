@@ -43,6 +43,6 @@ v0 = 20/3;%(m/s)
 [res9] = moveAV_Row0(1, 0, 8, v0, res8);
 
 %===movement of AV[0,8]===
-[res10] = moveAV_Row0(1, 0, 5, v0, res9);
+[res10] = moveAV_Row0(1, 0, 4, v0, res9);
 
 ret = animate(res10);
