@@ -24,8 +24,7 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
    
     xCenter = x0 + 1.35;
     yCenter = y0 - 6.7;
-    printf("Turn left at x0 = %f, y0 = %f\n", x0, y0);
-
+    
     [FourthTrajectory, lastT, x0, y0] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, 
                        xCenter, yCenter, Radius); 
     
@@ -42,10 +41,6 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     
     res = [res, SixthTrajectory];
     
-    %XY = SixthTrajectory(:, columns(SixthTrajectory));
-    %x0 = XY(1, 1);
-    %y0 = XY(2, 1);
-    
     [SeventhTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + 5.5, x0, y0); 
     res = [res, SeventhTrajectory];
     
@@ -59,8 +54,11 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     [NinethTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, lastT, lastT + (2.7/v0), x0, 
                                         y0); 
     res = [res, NinethTrajectory];
-  elseif(stack == 1 && row == 0 && (column == 2))
+  elseif(stack == 1 && (row == 0 || row == 1) && (column == 2))
     waitingTime = 4.650755;
+    if(row == 1)
+      waitingTime = waitingTime + (2.7/v0);
+    endif;
     
     %%%==========Movement of AV[1, 0, 2] - stack 1, row 0, column 2===========
     [FirstTrajectory, lastT] = waitFor(0, waitingTime, 10 + 1.35 + deltaX, 
@@ -139,9 +137,6 @@ function [res] = moveAV_Row0(stack, row, column, v0, otherAV)
     xCenter = x0 + 1.35;
     yCenter = y0 - 6.7;
     
-    %if(column == 8)
-    %  printf("time of this moment: %f\n", lastT);
-    %endif;
     [FifthTrajectory, lastT, x0, y0] = curveMovement(a0 + (pi/2), a0, pi/2, v0, lastT, xCenter, yCenter, Radius); 
     
     res = [res, FifthTrajectory];
