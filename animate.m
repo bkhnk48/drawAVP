@@ -1,16 +1,18 @@
 function res = animate(Coord)
   j = 0;
+  images = [];
   length = columns(Coord);
   height = rows(Coord);
   numOfAVs = height / 4;
   for i = 1: length
     XYA = Coord(:, 1);
     m = mod(i - 1, 4);
-    if(%(i <= 20) && 
-      %(i >= 170) &&
+    if(%(i <= 220) && 
+      %(i >= 120) &&
       (m == 0 || i == length))
       %graphics_toolkit('gnuplot');
-      figure(j + 1);
+      f = figure(j + 1);
+      images = [images, f];
       hold on;
       
       temp = init();
@@ -48,6 +50,7 @@ function res = animate(Coord)
     endif;
     Coord(:, 1) = [];
     
-  end
+  end;
+  closeAllFigs(images);
   res = 0;
 endfunction
