@@ -15,10 +15,10 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
     [FirstTrajectory, lastT, x0, y0] = linearMovement(-pi/2, v0, 0 + lastT, lastT + (3 - row)*5.4/v0, 10 + 1.35 + deltaX, 
                                           10 + 2.7 + deltaY + 10);
                                           
-    xCenter = x0 + 6.7;
+    xCenter = x0 - 6.7;
     yCenter = y0 + 1.35;
 
-    [SecondTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT,  
+    [SecondTrajectory, lastT, x0, y0] = curveMovement(-a0, -a0, -pi/2, v0, lastT,  
                         xCenter, yCenter, Radius);
     
     [ThirdTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
@@ -29,7 +29,9 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
   
   %====Movement of AV in stack 1, row 1====
   if(stack == 1 && row == 1)
-    waitingTime = 0.3 + 5.84 - (2*5.4/v0) ;
+    waitingTime = 2.42 + (4*2.7/v0);
+    %waitingTime = 0.3 + 5.84 - (2*5.4/v0)
+                  
     [ZeroTrajectory, lastT] = waitFor(0, waitingTime, 10 + 1.35 + deltaX, 
                                           10 + 2.7 + deltaY + 10, 0);
     [res] = [ZeroTrajectory];     
@@ -39,7 +41,7 @@ function [res] = moveAV2Gate2(stack, row, column, v0, otherCar)
     xCenter = x0 + 6.7;
     yCenter = y0 + 1.35; 
 
-    [SecondTrajectory, lastT, x0, y0] = curveMovement(a0 + pi, a0, pi/2, v0, lastT,  
+    [SecondTrajectory, lastT, x0, y0] = curveMovement(a0, a0, -pi/2, v0, lastT,  
                         xCenter, yCenter, Radius);
     
     [ThirdTrajectory, lastT, x0, y0] = linearMovement(0, v0, lastT, lastT + (WIDTH - x0 + 2.7)/v0, x0, 
