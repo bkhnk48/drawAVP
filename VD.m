@@ -22,11 +22,12 @@ printf("Inital pose\n");
 %xs = 10 + 1.35; ys = 10 + 3*5.4 + 10 + 2*5.4 + 2.7;
 [WIDTH, HEIGHT, R, alpha] = configuration();
 locStartedX = 10 + 1.35; locStartedY = 10 + 3*5.4 + 10 + 2*5.4 + 2.7;
-xs = round((locStartedX/WIDTH)*sz(2)) + 1; ys = round((locStartedY/HEIGHT)*sz(1)) + 1;
+%xs = round((locStartedX/WIDTH)*sz(2)) + 1; ys = round((locStartedY/HEIGHT)*sz(1)) + 1;
+xs = round((locStartedX*534/WIDTH)) + 183; ys = 443 - round((locStartedY*290/HEIGHT));
 % Goal Pose
 %xg = 10 + 16*2.7 + 1.35; yg = 0;
 locGoalX = 10 + 16*2.7 + 1.35; locGoalY = 0;
-xg = round((locGoalX/WIDTH)*sz(2)) + 1; yg = round((locGoalY/HEIGHT)*sz(1)) + 1;
+xg = round((locGoalX*534/WIDTH)) + 183; yg = 443 - round((locGoalY*290/HEIGHT));
 printf("xs = %d, ys = %d  ===> xg = %d, yg = %d\n", xs, ys, xg, yg);
 %xs = 225; ys = 355;
 % Goal Pose
