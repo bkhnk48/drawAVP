@@ -16,7 +16,7 @@ function res = init()
           %rectangle("Position", [10 + i*2.7, 10 + j*5.4, 2.7, 5.4], 
           %    "Edgecolor", [0, 0, 1]);
       else
-          rectangle("Position", [10 + i*2.7, 20 + (j + 3)*5.4, 2.7, 5.4],
+          rectangle("Position", [10 + i*2.7, 20 + (j + 3)*5.4, 2.7, 5.4], "Facecolor", 'w',
               "Edgecolor", 'w');%violet
       endif;
     endfor;
@@ -25,7 +25,7 @@ endfor;
   %stack 1
   for i = 0: 34
     for j = 0: 2
-       rectangle("Position", [10 + i*2.7, 10 + j*5.4, 2.7, 5.4],
+       rectangle("Position", [10 + i*2.7, 10 + j*5.4, 2.7, 5.4], "Facecolor", 'w',
               "Edgecolor", 'w');%violet
     endfor;
 endfor;
