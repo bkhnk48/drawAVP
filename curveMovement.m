@@ -1,4 +1,4 @@
-function [lastestX, lastestY, lastT] = curveMovement(a0, alpha, velocity, startTime, x0, y0, xCenter, yCenter, R, color)
+function [Coord, lastT, xLast, yLast] = curveMovement(a0, rotationA0, alpha, velocity, startTime, xCenter, yCenter, R)
   w0 = velocity / R;
   deltaT = abs(alpha)/w0;
   if(alpha < 0)
@@ -8,9 +8,9 @@ function [lastestX, lastestY, lastT] = curveMovement(a0, alpha, velocity, startT
   a = a0 + w0*(t - startTime);
   x = xCenter + R*cos(a);
   y = yCenter + R*sin(a);
-  hold on;
-  plot(x, y, color);
-  lastestX = x(length(x));
-  lastestY = y(length(y));
+  a = a - rotationA0;
+  Coord = [x; y; a; t];
   lastT = startTime + deltaT;
+  xLast = x(length(x));
+  yLast = y(length(y));
 endfunction
